@@ -20,7 +20,9 @@ def create(name):
     client.connect(('127.0.0.1', 9090 ))
 
     #Mensaje para el admin-container
-    client.send(name.encode())
+    message = 'create. {0}'.format(name)
+    print('sending {!r}'.format(message))
+    client.sendall(message)
 
     #Recibir lo que envia el admin-container
     print(client.recv(1024).decode())

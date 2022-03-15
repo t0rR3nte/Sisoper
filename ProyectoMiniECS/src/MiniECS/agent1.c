@@ -1,6 +1,6 @@
-#include <stdio.h> 
-#include <sys/types.h> 
-#include <unistd.h> 
+#include<stdio.h> 
+#include<sys/types.h> 
+#include<unistd.h> 
 #include<string.h>
 #include<sys/socket.h>
 #include<arpa/inet.h>
@@ -109,6 +109,22 @@ int main(int argc , char *argv[]) {
         memset ( client_messageA, 0, 2000 );
         //Receive a message from client
         if (recv(client_sockA , client_messageA , 2000 , 0) > 0) {
+            char * m1 = strtok(client_messageA, '.');
+            char * m2 = strtok(NULL, '.');
+            if(strcmp(m1, "create") == 0){
+                //Docker create container
+
+            }
+            else if(strcmp(m1, "stop") == 0){
+                //Docker function
+            }
+            else if(strcmp(m1, "start") == 0){
+                //Docker
+            }
+            else if(strcmp(m1, "delete") == 0){
+                //Docker
+            }
+            
             printf("Agent1(Socket-server) received message: %s\n", client_messageA);
             //Send the message back to client
             send(client_sockA , client_messageA , strlen(client_messageA), 0);
