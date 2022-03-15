@@ -8,12 +8,27 @@
 
 int main() {
     int id = fork();
+    char agentInfo = "127.0.0.1 7070";
+    int ordinaryPipe1[2];
+    int ordinaryPipe2[2];
+
+    pipe(ordinaryPipe1);
+    pipe(ordinaryPipe2);
+
+    
     //Subscribe-host (proceso hijo con socket server)
     if (id == 0) {
         //Variables and Structures
         int socket_desc1 , client_sock1 , c1 , read_size1;
         struct sockaddr_in server1 , client1;
         char client_message1[2000];
+
+        // Close the unwanted ordinary_pipe read side
+        close(ordinaryPipe1[0]);
+        // Close write
+        close(ordinaryPipe2[1]);
+
+        write(ordinaryPipe1[1], agentInfo, strlen(agentInfo));
         
         //Create socket server
         // AF_INET (IPv4 protocol) , AF_INET6 (IPv6 protocol) 
@@ -75,6 +90,22 @@ int main() {
         int socket_desc2 , client_sock2 , c2 , read_size2;
         struct sockaddr_in server2 , client2;
         char client_message2[2000];
+
+        // Parent process closes the unwanted ordinary_pipe write side
+        close(ordinaryPipe1[1]);
+        // Close read
+        close(ordinaryPipe2[0]);
+
+        int found = 0;
+        while (!found){
+            while((read(ordinaryPipe1[0], agentInfo, strlen(agentInfo))) > 0){
+                printf("Received string in child: %s ", agentInfo);
+                break;
+            }
+            printf("pipe done\n");
+            found = 1;
+        }
+        write(ordinaryPipe2[1], agentInfo, strlen(agentInfo));
         
         //Create socket server
         // AF_INET (IPv4 protocol) , AF_INET6 (IPv6 protocol) 
