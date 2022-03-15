@@ -107,8 +107,10 @@ int main(int argc , char *argv[]) {
         }
         puts("Agent1(Socket-server): Connection accepted");
         memset ( client_messageA, 0, 2000 );
+        
         //Receive a message from client
         if (recv(client_sockA , client_messageA , 2000 , 0) > 0) {
+            /*
             char * m1 = strtok(client_messageA, '.');
             char * m2 = strtok(NULL, '.');
             if(strcmp(m1, "create") == 0){
@@ -125,7 +127,7 @@ int main(int argc , char *argv[]) {
             else if(strcmp(m1, "delete") == 0){
                 char *args[]={"./bin/Docker", "rm",  "--f", m2, NULL};
             }
-
+            */
             printf("Agent1(Socket-server) received message: %s\n", client_messageA);
             //Send the message back to client
             send(client_sockA , client_messageA , strlen(client_messageA), 0);
