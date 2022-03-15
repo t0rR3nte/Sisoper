@@ -112,19 +112,20 @@ int main(int argc , char *argv[]) {
             char * m1 = strtok(client_messageA, '.');
             char * m2 = strtok(NULL, '.');
             if(strcmp(m1, "create") == 0){
-                //Docker create container
-
+                char *args[]={"./bin/Docker", "create", "--t", "--i", m2, NULL};
+                //execv()
             }
             else if(strcmp(m1, "stop") == 0){
-                //Docker function
+                char *args[]={"./bin/Docker", "stop", m2, NULL};
+                
             }
             else if(strcmp(m1, "start") == 0){
-                //Docker
+                char *args[]={"./bin/Docker", "run",  m2, NULL};
             }
             else if(strcmp(m1, "delete") == 0){
-                //Docker
+                char *args[]={"./bin/Docker", "rm",  "--f", m2, NULL};
             }
-            
+
             printf("Agent1(Socket-server) received message: %s\n", client_messageA);
             //Send the message back to client
             send(client_sockA , client_messageA , strlen(client_messageA), 0);

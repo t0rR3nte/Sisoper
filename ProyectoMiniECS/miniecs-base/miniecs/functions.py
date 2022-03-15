@@ -42,7 +42,9 @@ def stop(name):
     client.connect(('127.0.0.1', 9090 ))
 
     #Mensaje para el admin-container
-    client.send(name.encode())
+    message = 'stop. {0}'.format(name)
+    print('sending {!r}'.format(message))
+    client.sendall(message)
 
     #Recibir lo que envia el admin-container
     print(client.recv(1024).decode())
@@ -62,7 +64,9 @@ def start(name):
     client.connect(('127.0.0.1', 9090 ))
 
     #Mensaje para el admin-container
-    client.send(name.encode())
+    message = 'start. {0}'.format(name)
+    print('sending {!r}'.format(message))
+    client.sendall(message)
 
     #Recibir lo que envia el admin-container
     print(client.recv(1024).decode())
@@ -82,7 +86,9 @@ def delete(name):
     client.connect(('127.0.0.1', 9090 ))
 
     #Mensaje para el admin-container
-    client.send(name.encode())
+    message = 'delete. {0}'.format(name)
+    print('sending {!r}'.format(message))
+    client.sendall(message)
 
     #Recibir lo que envia el admin-container
     print(client.recv(1024).decode())
