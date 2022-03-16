@@ -21,7 +21,7 @@ int main(int argc , char *argv[]) {
 	
 	server.sin_addr.s_addr = inet_addr("127.0.0.1");
 	server.sin_family = AF_INET;
-	server.sin_port = htons(8080);
+	server.sin_port = htons(6161);
 
 	//Connect to remote server
 	if (connect(sock , (struct sockaddr *)&server , sizeof(server)) < 0) {
@@ -80,7 +80,7 @@ int main(int argc , char *argv[]) {
     serverA.sin_family = AF_INET;
     //server.sin_addr.s_addr = INADDR_ANY;
     serverA.sin_addr.s_addr = inet_addr("127.0.0.1");
-    serverA.sin_port = htons( 7070 );
+    serverA.sin_port = htons( 5050 );
     
     //Bind the socket to the address and port number specified
     if( bind(socket_descA, (struct sockaddr *)&serverA , sizeof(serverA)) < 0) {

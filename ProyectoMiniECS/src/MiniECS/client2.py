@@ -20,8 +20,6 @@ protocols = get_constants('IPPROTO_')
 
 # Create a TCP/IP socket
 #sock = socket.create_connection(('127.0.0.1', 9090))
-
-"""
 print('Family  :', families[sock.family])
 print('Type    :', types[sock.type])
 print('Protocol:', protocols[sock.proto])
@@ -44,4 +42,4 @@ try:
 
 finally:
     print('closing socket')
-  """
+  

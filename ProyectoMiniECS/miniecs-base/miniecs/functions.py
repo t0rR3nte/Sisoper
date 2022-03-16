@@ -17,7 +17,7 @@ def create(name):
     #host = socket.gethostname()
 
     #Establece a donde conectarse
-    client.connect(('127.0.0.1', 9090 ))
+    client.connect(('127.0.0.1', 9292 ))
 
     #Mensaje para el admin-container
     message = 'create. {0}'.format(name)
@@ -39,7 +39,7 @@ def stop(name):
     #host = socket.gethostname()
 
     #Establece a donde conectarse
-    client.connect(('127.0.0.1', 9090 ))
+    client.connect(('127.0.0.1', 9292 ))
 
     #Mensaje para el admin-container
     message = 'stop. {0}'.format(name)
@@ -61,7 +61,7 @@ def start(name):
     #host = socket.gethostname()
 
     #Establece a donde conectarse
-    client.connect(('127.0.0.1', 9090 ))
+    client.connect(('127.0.0.1', 9292 ))
 
     #Mensaje para el admin-container
     message = 'start. {0}'.format(name)
@@ -83,7 +83,7 @@ def delete(name):
     #host = socket.gethostname()
 
     #Establece a donde conectarse
-    client.connect(('127.0.0.1', 9090 ))
+    client.connect(('127.0.0.1', 9292 ))
 
     #Mensaje para el admin-container
     message = 'delete. {0}'.format(name)
@@ -105,7 +105,7 @@ def delete(name):
         #host = socket.gethostname()
 
         #Establece a donde conectarse
-        client.connect(('127.0.0.1', 9090 ))
+        client.connect(('127.0.0.1', 9292 ))
 
         #Mensaje para el admin-container
         message = 'listar. {0}'.format(name)
