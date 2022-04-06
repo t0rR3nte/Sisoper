@@ -83,7 +83,7 @@ int main() {
                 //Send the message back to client
                 send(client_sock1 , client_message1 , strlen(client_message1), 0);           
 
-                write(ordinaryPipe1[1], agentInfo, strlen(agentInfo));
+                write(ordinaryPipe1[1], agentInfo, 14);
                 
             } 
             else{
@@ -151,12 +151,12 @@ int main() {
                 // Close read
                 close(ordinaryPipe2[0]);
 
-                if((read(ordinaryPipe1[0], agentInfo, strlen(agentInfo))) > 0){
+                if((read(ordinaryPipe1[0], agentInfo, 14)) > 0){
                     printf("Received string in child: %s ", agentInfo);
                 }
                 printf("pipe done\n");
 
-                write(ordinaryPipe2[1], agentInfo, strlen(agentInfo));
+                write(ordinaryPipe2[1], agentInfo, 14);
                 
                 //puts("Se metio al if padre");
                 //Send the message back to client
